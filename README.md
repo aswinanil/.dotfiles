@@ -1,2 +1,2 @@
 # vimrc
-my .vimrc file
+Tracks my .vimrc file
