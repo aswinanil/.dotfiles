@@ -1,0 +1,23 @@
+# Config
+export TERM=xterm-color
+export CLICOLOR=1
+export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# aliases
+alias p-awa='cd ~/code/pigeonlab/web-app'
+alias p-dbd='cd ~/code/pigeonlab/dashboard'
+alias p-api='cd ~/code/pigeonlab/api'
+alias p-dbv='cd ~/code/pigeonlab/dbv'
+alias notes='cd ~/Google\ Drive/GD\ personal/notes'
+
+# show git branch in iterm
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+function iterm2_print_user_vars() {
+    iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+}
+source ~/.git-completion.bash
+
+# show git branch in prompt
+#source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+#export PS1='\[\033[0;32m\]\u\[\033[0;36m\] @ \h \w\[\033[0;32m\]$(__git_ps1)\n└─ ▶\[\033[0m\] '
