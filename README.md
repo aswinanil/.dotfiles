@@ -1,10 +1,10 @@
 # about
 tracks my dotfiles
- - .vimrc
- - .bash_profile_user
+- .vimrc
+- .bash_profile_user
  
- # instructions
-1. add `source .bash_profile_user` into your .bash_profile
+# instructions
+1. add `source ~/.bash_profile_user` into your .bash_profile
 2. create symlinks 
     1. `ln -sv ~/.dotfiles/.bash_profile_user ~`
     2. `ln -sv ~/.dotfiles/.vimrc ~`
