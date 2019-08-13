@@ -3,13 +3,21 @@ export TERM=xterm-color
 export CLICOLOR=1
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
+export LC_ALL=en_US.UTF-8
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
 
 # aliases
 alias p-awa='cd ~/code/pigeonlab/web-app'
 alias p-dbd='cd ~/code/pigeonlab/dashboard'
 alias p-api='cd ~/code/pigeonlab/api'
 alias p-dbv='cd ~/code/pigeonlab/dbv'
-alias notes='cd ~/Google\ Drive/GD\ personal/notes'
+alias p-dkr='cd ~/code/pigeonlab/docker-main'
+alias p-lab='cd ~/code/pigeonlab/'
+
+alias notes='cd ~/Google\ Drive/GD\ personal/notes/pigeonlab'
+alias google='git grep -niA29 -B13 $1'
+alias bing='git grep -niA9 -B4 $1'
 
 # show git branch in iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

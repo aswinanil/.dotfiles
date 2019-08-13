@@ -14,6 +14,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'thirtythreeforty/lessspace.vim'
+Plug 'mustache/vim-mustache-handlebars'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -36,6 +37,8 @@ set smartindent
 set mouse+=i
 set ignorecase
 set incsearch
+set clipboard=unnamed
+set bs=2
 
 nnoremap <leader>w :update<CR>
 nnoremap <leader>q :qa<CR>
@@ -77,6 +80,8 @@ nnoremap 1 <C-e>j
 nnoremap 2 <C-y>k
 nnoremap 3 7<C-e>7j
 nnoremap 4 7<C-y>7k
+nnoremap 8 <C-f>M0
+nnoremap 9 <C-b>M0
 
 "move to beginning of line
 nnoremap ( ^
