@@ -19,6 +19,9 @@ alias notes='cd ~/Google\ Drive/GD\ personal/notes/pigeonlab'
 alias google='git grep -niA29 -B13 $1'
 alias bing='git grep -niA9 -B4 $1'
 
+alias ls='ls -l'
+alias lsa='ls -a'
+
 # show git branch in iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 function iterm2_print_user_vars() {
