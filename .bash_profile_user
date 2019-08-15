@@ -22,6 +22,10 @@ alias bing='git grep -niA9 -B4 $1'
 alias ls='ls -l'
 alias lsa='ls -a'
 
+alias dif='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines'
+alias difs='git diff --ignore-space-at-eol -b -w -U5 --ignore-blank-lines'
+alias dif1='git diff --ignore-space-at-eol -b -w -U1 --ignore-blank-lines'
+
 # show git branch in iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 function iterm2_print_user_vars() {
