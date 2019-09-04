@@ -40,29 +40,39 @@ set incsearch
 set clipboard=unnamed
 set bs=2
 
+nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>w :update<CR>
 nnoremap <leader>q :qa<CR>
-nnoremap <leader>e :e!<CR>
+nnoremap <leader>r :e!<CR>
 nnoremap <leader>d :w !diff % -<CR>
+nnoremap <leader>l :ls<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>b :b
+nnoremap <leader>d :bd
+nnoremap <leader>a :bad
+nnoremap <leader>e :e
+" select just pasted text
+noremap <expr> <leader>P '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-"move vertically by visual line
+" move vertically by visual line
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-"move by few lines
+" move by few lines
 nnoremap J 7j
 nnoremap K 7k
 vnoremap J 7j
 vnoremap K 7k
 
-"H M L should shift cursor to start of line
+" H M L should shift cursor to start of line
 nnoremap H H0
 nnoremap M M0
 nnoremap L L0
 
-"page navigation should shift cursor to start of line
+" page navigation should shift cursor to start of line
 nnoremap <C-u> <C-u>
 nnoremap <C-d> <C-d>
 nnoremap <C-b> <C-b>M0
@@ -74,8 +84,8 @@ nnoremap zb zbM0
 nnoremap # #zz
 nnoremap * *zz
 
-"nnoremap <C-q> <C-e>
-"nnoremap <C-w> <C-y>
+" nnoremap <C-q> <C-e>
+" nnoremap <C-w> <C-y>
 nnoremap 1 <C-e>j
 nnoremap 2 <C-y>k
 nnoremap 3 7<C-e>7j
@@ -83,13 +93,13 @@ nnoremap 4 7<C-y>7k
 nnoremap 8 <C-f>M0
 nnoremap 9 <C-b>M0
 
-"move to beginning of line
+" move to beginning of line
 nnoremap ( ^
 nnoremap ) $
 vnoremap ( ^
 vnoremap ) $
 
-"centre text when searching
+" centre text when searching
 nnoremap n nzz
 nnoremap N Nzz
 
@@ -97,28 +107,28 @@ set breakindent
 set hlsearch
 
 nnoremap <space> i<space><esc>
-"nnoremap <return> i<return><esc>
+" nnoremap <return> i<return><esc>
 
-"search curr word without jump
+" search curr word without jump
 nnoremap _ *``
 
-"toggle hightlight
-"let hlstate=0
-"nnoremap = :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
+" toggle hightlight
+" let hlstate=0
+" nnoremap = :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
 
 nnoremap + :set hlsearch<CR>
 nnoremap = :nohlsearch<CR>
 
 :set virtualedit=all
 
-"let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-"let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+" let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-"set guicursor=n-v-c:block-Cursor
-"set guicursor+=i:ver100-iCursor
-"set guicursor+=n-v-c:blinkon0
-"set guicursor+=i:blinkwait10
+" set guicursor=n-v-c:block-Cursor
+" set guicursor+=i:ver100-iCursor
+" set guicursor+=n-v-c:blinkon0
+" set guicursor+=i:blinkwait10
 
 " set the title of the Terminal to the currently open file
 function! SetTerminalTitle()
@@ -134,7 +144,7 @@ function! SetTerminalTitle()
 endfunction
 
 autocmd BufEnter * call SetTerminalTitle()
-"autocmd InsertLeave * silent! update
+" autocmd InsertLeave * silent! update
 set undofile
 set undodir=/Users/aswin/.vim/undohistory/
 
@@ -151,9 +161,6 @@ com! Diffu call s:DiffWithSaved()
 set foldmethod=indent
 set foldnestmax=10
 set foldlevel=2
-
-" select just pasted text
-noremap <expr> <leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 function! AddEmptyLineBelow()
   call append(line("."), "")
