@@ -24,6 +24,8 @@ alias g-g1='git grep -niA1 -B1 $1'
 alias ls='ls -l'
 alias lsa='ls -a'
 
+# TODO: add alias for find cmds
+
 alias g-d='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines'
 alias g-d7='git diff --ignore-space-at-eol -b -w -U7 --ignore-blank-lines'
 alias g-d1='git diff --ignore-space-at-eol -b -w -U1 --ignore-blank-lines'
@@ -45,6 +47,8 @@ alias g-pl='git pull'
 alias g-ps='git push'
 alias g-a='git add'
 alias g-au='git add -u'
+alias g-r='git reset'
+alias g-rh='git reset --hard'
 alias g-uis='git update-index --skip-worktree'
 alias g-ui='git update-index --no-skip-worktree'
 alias g-uil='git ls-files -v | grep "^S"'

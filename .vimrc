@@ -34,7 +34,8 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
-set mouse+=i
+" set mouse+=i
+" TODO: disable mouse from shifting cursor
 set ignorecase
 set incsearch
 set clipboard=unnamed
@@ -50,8 +51,9 @@ nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>b :b
 nnoremap <leader>d :bd
-nnoremap <leader>a :bad
-nnoremap <leader>e :e
+nnoremap <leader>a :bad ./
+nnoremap <leader>e :e ./
+nnoremap <leader>m :marks<CR>
 " select just pasted text
 noremap <expr> <leader>P '`[' . strpart(getregtype(), 0, 1) . '`]'
 
