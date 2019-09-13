@@ -42,20 +42,46 @@ set clipboard=unnamed
 set bs=2
 
 nnoremap <leader>s :source ~/.vimrc<CR>
-nnoremap <leader>w :update<CR>
-nnoremap <leader>q :qa<CR>
+" nnoremap <leader>w :update<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qa<CR>
 nnoremap <leader>r :e!<CR>
 nnoremap <leader>d :w !diff % -<CR>
 nnoremap <leader>l :ls<CR>
-nnoremap <leader>n :bn<CR>
-nnoremap <leader>p :bp<CR>
-nnoremap <leader>b :b
-nnoremap <leader>d :bd
 nnoremap <leader>a :bad ./
 nnoremap <leader>e :e ./
 nnoremap <leader>m :marks<CR>
+nnoremap <leader>v <C-w>H
+nnoremap <leader>h <C-w>K
+nnoremap <leader>f :let @+ = expand("%:p")<CR>
+
+nnoremap <leader>b :b<space>
+nnoremap <leader>p :b #<CR>
+nnoremap <leader>D :bd<space>
+"nnoremap <leader>n :bn<CR>
+"nnoremap <leader>p :bp<CR>
+nnoremap <leader>1 :b 1<CR>
+nnoremap <leader>2 :b 2<CR>
+nnoremap <leader>3 :b 3<CR>
+nnoremap <leader>4 :b 4<CR>
+nnoremap <leader>5 :b 5<CR>
+nnoremap <leader>6 :b 6<CR>
+nnoremap <leader>7 :b 7<CR>
+nnoremap <leader>8 :b 8<CR>
+nnoremap <leader>9 :b 9<CR>
+nnoremap <leader>0 :b 1
+
+" nnoremap <leader>n :delmarks A-Z0-9<CR>
 " select just pasted text
 noremap <expr> <leader>P '`[' . strpart(getregtype(), 0, 1) . '`]'
+" TODO: add shortcut for inserting character without replacing
+
+" saving
+nnoremap <F1> :update<CR>
+
+nnoremap <BS> X
+nnoremap ) "0p
+vnoremap ) "0p
 
 " move vertically by visual line
 nnoremap j gj
@@ -64,15 +90,17 @@ vnoremap j gj
 vnoremap k gk
 
 " move by few lines
-nnoremap J 7j
-nnoremap K 7k
-vnoremap J 7j
-vnoremap K 7k
+nnoremap J 7gj
+nnoremap K 7gk
+vnoremap J 7gj
+vnoremap K 7gk
 
 " H M L should shift cursor to start of line
-nnoremap H H0
+"nnoremap H H0
 nnoremap M M0
-nnoremap L L0
+"nnoremap L L0
+
+nnoremap G Gzz
 
 " page navigation should shift cursor to start of line
 nnoremap <C-u> <C-u>
@@ -88,18 +116,32 @@ nnoremap * *zz
 
 " nnoremap <C-q> <C-e>
 " nnoremap <C-w> <C-y>
-nnoremap 1 <C-e>j
-nnoremap 2 <C-y>k
-nnoremap 3 7<C-e>7j
-nnoremap 4 7<C-y>7k
-nnoremap 8 <C-f>M0
-nnoremap 9 <C-b>M0
+
+nnoremap <F8> <C-f>M0
+nnoremap <F9> <C-b>M0
+
+nnoremap <F2> <C-e>j
+nnoremap <F3> 7<C-e>7j
+nnoremap <F4> 7<C-y>7k
+nnoremap <F5> <C-y>k
+
+nnoremap <C-j> <C-e>j
+nnoremap <C-k> <C-y>k
+
+inoremap <F8> <down>
+inoremap <F9> <up>
+inoremap <F7> <left>
+inoremap <F10> <right>
 
 " move to beginning of line
-nnoremap ( ^
-nnoremap ) $
-vnoremap ( ^
-vnoremap ) $
+"nnoremap ( ^
+"nnoremap ) $
+"vnoremap ( ^
+"vnoremap ) $
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
 
 " centre text when searching
 nnoremap n nzz
@@ -179,5 +221,7 @@ function! AddEmptyLineAbove()
   let &scrolloff = l:scrolloffsave
 endfunction
 
-noremap <silent> <C-j> :call AddEmptyLineBelow()<CR>
-noremap <silent> <C-k> :call AddEmptyLineAbove()<CR>
+"noremap <silent> <C-j> :call AddEmptyLineBelow()<CR>
+"noremap <silent> <C-k> :call AddEmptyLineAbove()<CR>
+noremap <silent> <CR> :call AddEmptyLineBelow()<CR>j0
+noremap <silent> <S-CR> :call AddEmptyLineAbove()<CR>j0

@@ -8,6 +8,7 @@ bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 
 # aliases
+## folders
 alias p-awa='cd ~/code/pigeonlab/web-app'
 alias p-dbd='cd ~/code/pigeonlab/dashboard'
 alias p-api='cd ~/code/pigeonlab/api'
@@ -16,27 +17,34 @@ alias p-dkr='cd ~/code/pigeonlab/docker-main'
 alias p-lab='cd ~/code/pigeonlab/'
 
 alias notes='cd ~/Google\ Drive/GD\ personal/notes/pigeonlab'
+alias dot='cd ~/.dotfiles'
+
 alias g-g='git grep -niA29 -B13 $1'
 alias g-gc='git grep -nA29 -B13 $1'
 alias g-g7='git grep -niA7 -B4 $1'
-alias g-g1='git grep -niA1 -B1 $1'
+alias g-g0='git grep -ni $1'
 
 alias ls='ls -l'
 alias lsa='ls -a'
 
-# TODO: add alias for find cmds
-
+## git
 alias g-d='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines'
 alias g-d7='git diff --ignore-space-at-eol -b -w -U7 --ignore-blank-lines'
-alias g-d1='git diff --ignore-space-at-eol -b -w -U1 --ignore-blank-lines'
+alias g-d0='git diff --ignore-space-at-eol -b -w --ignore-blank-lines'
 alias g-ds='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines --staged'
+alias g-ds7='git diff --ignore-space-at-eol -b -w -U7 --ignore-blank-lines --staged'
+alias g-ds0='git diff --ignore-space-at-eol -b -w --ignore-blank-lines --staged'
 alias g-s='git status'
-alias g-sh='git show head'
+alias g-sh='git show -U27'
+alias g-sh0='git show'
+alias g-shh='git show -U27 head'
+alias g-shh0='git show head'
 alias g-st='git stash'
 alias g-stl='git stash list'
-alias g-sts='git stash show -p 0'
+alias g-sts='git stash show -p'
 alias g-std='git stash drop 0'
 alias g-stp='git stash push -m'
+alias g-sta='git stash apply'
 alias g-l='git log'
 alias g-lm='git log --author="aswin"'
 alias g-c='git checkout'
@@ -45,13 +53,51 @@ alias g-cma='git commit --amend'
 alias g-b='git branch'
 alias g-pl='git pull'
 alias g-ps='git push'
+alias g-m='git merge'
 alias g-a='git add'
 alias g-au='git add -u'
 alias g-r='git reset'
 alias g-rh='git reset --hard'
+alias g-rb='git rebase -i'
 alias g-uis='git update-index --skip-worktree'
 alias g-ui='git update-index --no-skip-worktree'
 alias g-uil='git ls-files -v | grep "^S"'
+
+## docker
+alias d-p='docker ps'
+alias d-pr='p-dkr && ./docker_prepare.sh'
+alias d-pn='p-dkr && ./docker_prune.sh'
+
+alias d-l='p-dkr && ./docker_logs.sh'
+alias d-la1='p-dkr && ./docker_logs.sh api1'
+alias d-la2='p-dkr && ./docker_logs.sh api2'
+alias d-lw='p-dkr && ./docker_logs.sh web-app'
+alias d-ld='p-dkr && ./docker_logs.sh dashboard'
+
+alias d-c='p-dkr && ./docker_connect.sh'
+alias d-ca='p-dkr && ./docker_connect.sh api1'
+alias d-cw='p-dkr && ./docker_connect.sh web-app'
+alias d-cd='p-dkr && ./docker_connect.sh dashboard'
+
+alias d-cp='p-dkr && docker-compose build'
+
+alias d-r='p-dkr && ./restart_container.sh'
+alias d-ra1='p-dkr && ./restart_container.sh api1'
+alias d-ra2='p-dkr && ./restart_container.sh api2'
+alias d-rw='p-dkr && ./restart_container.sh web-app'
+alias d-rd='p-dkr && ./restart_container.sh dashboard'
+
+alias d-rb='p-dkr && ./rebuild_container.sh'
+alias d-rba1='p-dkr && ./rebuild_container.sh api1'
+alias d-rba2='p-dkr && ./rebuild_container.sh api2'
+alias d-rbw='p-dkr && ./rebuild_container.sh web-app'
+alias d-rbd='p-dkr && ./rebuild_container.sh dashboard'
+
+alias d-sa='p-dkr && ./start.sh'
+alias d-so='p-dkr && ./stop.sh'
+
+# functions
+f-1() { find "$1" -iname *"$2"*; }
 
 # show git branch in iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
