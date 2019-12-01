@@ -96,8 +96,18 @@ alias d-rbd='p-dkr && ./rebuild_container.sh dashboard'
 alias d-sa='p-dkr && ./start.sh'
 alias d-so='p-dkr && ./stop.sh'
 
+## vpn fix
+alias v-f='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
+
 # functions
-f-1() { find "$1" -iname *"$2"*; }
+f-1() {
+    if [ "$2" ]
+    then
+        find "$1" -iname *"$2"*;
+    else
+        find ./ -iname *"$1"*;
+    fi
+}
 
 # show git branch in iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
