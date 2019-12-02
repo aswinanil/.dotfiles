@@ -15,15 +15,24 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'thirtythreeforty/lessspace.vim'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-vinegar'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+"let g:indent_guides_enable_on_vim_startup = 1
 let g:vim_markdown_strikethrough=1
 let g:vim_markdown_toc_autofit = 1
 let g:airline_powerline_fonts=1
 
-let mapleader="-"
+let mapleader=" "
+"nnoremap . ;
+"nnoremap <space> .
+
 set t_Co=256
 
 syntax enable
@@ -56,7 +65,7 @@ nnoremap <leader>h <C-w>K
 nnoremap <leader>f :let @+ = expand("%:p")<CR>
 
 nnoremap <leader>b :b<space>
-nnoremap <leader>p :b #<CR>
+nnoremap <leader>, :b #<CR>
 nnoremap <leader>D :bd<space>
 "nnoremap <leader>n :bn<CR>
 "nnoremap <leader>p :bp<CR>
@@ -150,7 +159,7 @@ nnoremap N Nzz
 set breakindent
 set hlsearch
 
-nnoremap <space> i<space><esc>
+nnoremap <NUL> i<space><esc>
 " nnoremap <return> i<return><esc>
 
 " search curr word without jump
@@ -225,3 +234,14 @@ endfunction
 "noremap <silent> <C-k> :call AddEmptyLineAbove()<CR>
 noremap <silent> <CR> :call AddEmptyLineBelow()<CR>j0
 noremap <silent> <S-CR> :call AddEmptyLineAbove()<CR>j0
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']

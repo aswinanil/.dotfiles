@@ -29,6 +29,7 @@ alias lsa='ls -a'
 
 ## git
 alias g-d='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines'
+alias g-dn='git diff --name-only --ignore-space-at-eol -b -w --ignore-blank-lines'
 alias g-d7='git diff --ignore-space-at-eol -b -w -U7 --ignore-blank-lines'
 alias g-d0='git diff --ignore-space-at-eol -b -w --ignore-blank-lines'
 alias g-ds='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines --staged'
