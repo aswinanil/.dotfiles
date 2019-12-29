@@ -15,16 +15,20 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'thirtythreeforty/lessspace.vim'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'yggdroot/indentline'
+Plug 'tpope/vim-commentary'
+Plug '/usr/local/opt/fzf'
+Plug 'justinmk/vim-sneak'
+Plug 'tmsvg/pear-tree'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'jiangmiao/auto-pairs'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-"let g:indent_guides_enable_on_vim_startup = 1
+let g:indentLine_color_term = 244
 let g:vim_markdown_strikethrough=1
 let g:vim_markdown_toc_autofit = 1
 let g:airline_powerline_fonts=1
@@ -62,7 +66,9 @@ nnoremap <leader>e :e ./
 nnoremap <leader>m :marks<CR>
 nnoremap <leader>v <C-w>H
 nnoremap <leader>h <C-w>K
-nnoremap <leader>f :let @+ = expand("%:p")<CR>
+nnoremap <leader>p :let @+ = expand("%:p")<CR>
+nnoremap <leader>g :g/
+nnoremap <leader>f :FZF<CR>
 
 nnoremap <leader>b :b<space>
 nnoremap <leader>, :b #<CR>
@@ -230,10 +236,8 @@ function! AddEmptyLineAbove()
   let &scrolloff = l:scrolloffsave
 endfunction
 
-"noremap <silent> <C-j> :call AddEmptyLineBelow()<CR>
-"noremap <silent> <C-k> :call AddEmptyLineAbove()<CR>
-noremap <silent> <CR> :call AddEmptyLineBelow()<CR>j0
-noremap <silent> <S-CR> :call AddEmptyLineAbove()<CR>j0
+noremap <silent> <C-h> :call AddEmptyLineBelow()<CR>
+noremap <silent> <C-l> :call AddEmptyLineAbove()<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows

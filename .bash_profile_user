@@ -6,8 +6,32 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 export LC_ALL=en_US.UTF-8
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # aliases
+
+## misc
+
+### search
+alias r-g='rg -iA29 -B13 $1'
+alias r-gc='rg -A29 -B13 $1'
+alias r-g7='rg -iA7 -B4 $1'
+alias r-g0='rg -i $1'
+
+alias g-g='git grep -niA29 -B13 $1'
+alias g-gc='git grep -nA29 -B13 $1'
+alias g-g7='git grep -niA7 -B4 $1'
+alias g-g0='git grep -ni $1'
+
+alias ls='ls -l'
+alias lsa='ls -a'
+
+### vpn fix
+alias f-v='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
+
+### fzf
+alias v-f='vim $(fzf)'
+
 ## folders
 alias p-awa='cd ~/code/pigeonlab/web-app'
 alias p-dbd='cd ~/code/pigeonlab/dashboard'
@@ -18,14 +42,6 @@ alias p-lab='cd ~/code/pigeonlab/'
 
 alias notes='cd ~/Google\ Drive/GD\ personal/notes/pigeonlab'
 alias dot='cd ~/.dotfiles'
-
-alias g-g='git grep -niA29 -B13 $1'
-alias g-gc='git grep -nA29 -B13 $1'
-alias g-g7='git grep -niA7 -B4 $1'
-alias g-g0='git grep -ni $1'
-
-alias ls='ls -l'
-alias lsa='ls -a'
 
 ## git
 alias g-d='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines'
@@ -96,9 +112,6 @@ alias d-rbd='p-dkr && ./rebuild_container.sh dashboard'
 
 alias d-sa='p-dkr && ./start.sh'
 alias d-so='p-dkr && ./stop.sh'
-
-## vpn fix
-alias v-f='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
 
 # functions
 f-1() {
