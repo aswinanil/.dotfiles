@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
@@ -28,20 +29,18 @@ Plug 'tmsvg/pear-tree'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-let g:indentLine_color_term = 244
-let g:vim_markdown_strikethrough=1
-let g:vim_markdown_toc_autofit = 1
+let g:indentLine_color_term=244
 let g:airline_powerline_fonts=1
+let g:limelight_conceal_ctermfg=243
 
 let mapleader=" "
 "nnoremap . ;
 "nnoremap <space> .
 
-set t_Co=256
-
 syntax enable
-set number
 
+set number
+set t_Co=256
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -53,6 +52,7 @@ set ignorecase
 set incsearch
 set clipboard=unnamed
 set bs=2
+
 
 nnoremap <leader>s :source ~/.vimrc<CR>
 " nnoremap <leader>w :update<CR>
@@ -165,8 +165,10 @@ nnoremap N Nzz
 set breakindent
 set hlsearch
 
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 nnoremap <NUL> i<space><esc>
-" nnoremap <return> i<return><esc>
 
 " search curr word without jump
 nnoremap _ *``
