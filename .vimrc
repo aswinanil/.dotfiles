@@ -29,14 +29,6 @@ Plug 'tmsvg/pear-tree'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-let g:indentLine_color_term=244
-let g:airline_powerline_fonts=1
-let g:limelight_conceal_ctermfg=243
-
-let mapleader=" "
-"nnoremap . ;
-"nnoremap <space> .
-
 syntax enable
 
 set number
@@ -46,16 +38,27 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
-" set mouse+=i
-" TODO: disable mouse from shifting cursor
 set ignorecase
 set incsearch
 set clipboard=unnamed
 set bs=2
+set breakindent
+set hlsearch
+set undofile
+set undodir=/Users/aswin/.vim/undohistory/
+set foldmethod=indent
+set foldnestmax=10
+set foldlevel=2
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+:set virtualedit=all
 
+let g:indentLine_color_term=244
+let g:airline_powerline_fonts=1
+let g:limelight_conceal_ctermfg=243
+let mapleader=" "
 
 nnoremap <leader>s :source ~/.vimrc<CR>
-" nnoremap <leader>w :update<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 nnoremap <leader>r :e!<CR>
@@ -73,8 +76,6 @@ nnoremap <leader>f :FZF<CR>
 nnoremap <leader>b :b<space>
 nnoremap <leader>, :b #<CR>
 nnoremap <leader>D :bd<space>
-"nnoremap <leader>n :bn<CR>
-"nnoremap <leader>p :bp<CR>
 nnoremap <leader>1 :b 1<CR>
 nnoremap <leader>2 :b 2<CR>
 nnoremap <leader>3 :b 3<CR>
@@ -85,10 +86,10 @@ nnoremap <leader>7 :b 7<CR>
 nnoremap <leader>8 :b 8<CR>
 nnoremap <leader>9 :b 9<CR>
 nnoremap <leader>0 :b 1
-
 " nnoremap <leader>n :delmarks A-Z0-9<CR>
 " select just pasted text
 noremap <expr> <leader>P '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " TODO: add shortcut for inserting character without replacing
 
 " saving
@@ -110,11 +111,7 @@ nnoremap K 7gk
 vnoremap J 7gj
 vnoremap K 7gk
 
-" H M L should shift cursor to start of line
-"nnoremap H H0
 nnoremap M M0
-"nnoremap L L0
-
 nnoremap G Gzz
 
 " page navigation should shift cursor to start of line
@@ -128,9 +125,6 @@ nnoremap zb zbM0
 
 nnoremap # #zz
 nnoremap * *zz
-
-" nnoremap <C-q> <C-e>
-" nnoremap <C-w> <C-y>
 
 nnoremap <F8> <C-f>M0
 nnoremap <F9> <C-b>M0
@@ -149,10 +143,6 @@ inoremap <F7> <left>
 inoremap <F10> <right>
 
 " move to beginning of line
-"nnoremap ( ^
-"nnoremap ) $
-"vnoremap ( ^
-"vnoremap ) $
 nnoremap H ^
 nnoremap L $
 vnoremap H ^
@@ -162,34 +152,20 @@ vnoremap L $
 nnoremap n nzz
 nnoremap N Nzz
 
-set breakindent
-set hlsearch
-
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-nnoremap <NUL> i<space><esc>
-
 " search curr word without jump
 nnoremap _ *``
-
-" toggle hightlight
-" let hlstate=0
-" nnoremap = :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
 
 nnoremap + :set hlsearch<CR>
 nnoremap = :nohlsearch<CR>
 
-:set virtualedit=all
+nnoremap <NUL> i<space><esc>
+nnoremap <C-i> i <Esc>r
 
-" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-" let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
-" set guicursor=n-v-c:block-Cursor
-" set guicursor+=i:ver100-iCursor
-" set guicursor+=n-v-c:blinkon0
-" set guicursor+=i:blinkwait10
+
+" *** FUNCTIONS ***
 
 " set the title of the Terminal to the currently open file
 function! SetTerminalTitle()
@@ -204,11 +180,6 @@ function! SetTerminalTitle()
     endif
 endfunction
 
-autocmd BufEnter * call SetTerminalTitle()
-" autocmd InsertLeave * silent! update
-set undofile
-set undodir=/Users/aswin/.vim/undohistory/
-
 " view unsaved changes
 function! s:DiffWithSaved()
   let filetype=&ft
@@ -218,10 +189,6 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! Diffu call s:DiffWithSaved()
-
-set foldmethod=indent
-set foldnestmax=10
-set foldlevel=2
 
 function! AddEmptyLineBelow()
   call append(line("."), "")
@@ -240,14 +207,4 @@ endfunction
 
 noremap <silent> <C-h> :call AddEmptyLineBelow()<CR>
 noremap <silent> <C-l> :call AddEmptyLineAbove()<CR>
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+autocmd BufEnter * call SetTerminalTitle()
