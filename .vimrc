@@ -12,10 +12,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
 Plug 'thirtythreeforty/lessspace.vim'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'yggdroot/indentline'
@@ -23,8 +20,11 @@ Plug 'tpope/vim-commentary'
 Plug '/usr/local/opt/fzf'
 Plug 'justinmk/vim-sneak'
 Plug 'tmsvg/pear-tree'
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'jiangmiao/auto-pairs'
+Plug 'vim-airline/vim-airline'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'tpope/vim-fugitive'
+" Plug 'mustache/vim-mustache-handlebars'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -51,14 +51,15 @@ set foldnestmax=10
 set foldlevel=2
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set timeoutlen=1000 ttimeoutlen=0
 :set virtualedit=all
 
 let g:indentLine_color_term=244
-let g:airline_powerline_fonts=1
 let g:limelight_conceal_ctermfg=243
 let mapleader=" "
+let g:airline_extensions = []
+" let g:airline_powerline_fonts=1
 
-nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 nnoremap <leader>r :e!<CR>
@@ -87,10 +88,9 @@ nnoremap <leader>8 :b 8<CR>
 nnoremap <leader>9 :b 9<CR>
 nnoremap <leader>0 :b 1
 " nnoremap <leader>n :delmarks A-Z0-9<CR>
+" nnoremap <leader>s :source ~/.vimrc<CR>
 " select just pasted text
 noremap <expr> <leader>P '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-" TODO: add shortcut for inserting character without replacing
 
 " saving
 nnoremap <F1> :update<CR>
@@ -134,8 +134,10 @@ nnoremap <F3> 7<C-e>7j
 nnoremap <F4> 7<C-y>7k
 nnoremap <F5> <C-y>k
 
-nnoremap <C-j> <C-e>j
-nnoremap <C-k> <C-y>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
 inoremap <F8> <down>
 inoremap <F9> <up>
@@ -163,7 +165,7 @@ nnoremap <C-i> i <Esc>r
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
-
+autocmd VimResized * exe "normal! \<c-w>="
 
 " *** FUNCTIONS ***
 
@@ -205,6 +207,6 @@ function! AddEmptyLineAbove()
   let &scrolloff = l:scrolloffsave
 endfunction
 
-noremap <silent> <C-h> :call AddEmptyLineBelow()<CR>
-noremap <silent> <C-l> :call AddEmptyLineAbove()<CR>
+noremap <silent> <F10> :call AddEmptyLineBelow()<CR>
+noremap <silent> <F12> :call AddEmptyLineAbove()<CR>
 autocmd BufEnter * call SetTerminalTitle()

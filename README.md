@@ -12,3 +12,7 @@ tracks my dotfiles
     3. `ln -sv ~/.dotfiles/markdown.vim ~/.vim/after/ftplugin`
 3. to show iterm badge _(bash version)_
     1. `curl -L https://iterm2.com/shell_integration/bash \ -o ~/.iterm2_shell_integration.bash`
+4. install packages
+    1. `brew install fzf`
+    2. `$(brew --prefix)/opt/fzf/install`
+    3. `brew install ripgrep`
