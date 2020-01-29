@@ -48,11 +48,13 @@ set undofile
 set undodir=/Users/aswin/.vim/undohistory/
 set foldmethod=indent
 set foldnestmax=10
-set foldlevel=2
+set foldlevelstart=10
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set timeoutlen=1000 ttimeoutlen=0
 :set virtualedit=all
+
+highlight Comment cterm=italic
 
 let g:indentLine_color_term=244
 let g:limelight_conceal_ctermfg=243

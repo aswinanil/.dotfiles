@@ -1,5 +1,4 @@
 # Config
-export TERM=xterm-color
 export CLICOLOR=1
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
@@ -32,6 +31,9 @@ alias f-v='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up
 
 ### fzf
 alias v-f='vim $(fzf)'
+
+### print colors
+alias print-colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
 
 ## folders
 alias p-awa='cd ~/code/pigeonlab/web-app'
@@ -125,11 +127,14 @@ f-1() {
 }
 
 # show git branch in iterm
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-function iterm2_print_user_vars() {
-    iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
-}
-source ~/.git-completion.bash
+
+## paste following in Profiles > General > Badge: \(session.path) @ \(user.gitBranch)
+
+# test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# function iterm2_print_user_vars() {
+#     iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+# }
+# source ~/.git-completion.bash
 
 # show git branch in prompt
 #source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
