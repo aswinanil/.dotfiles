@@ -4,9 +4,11 @@ alias grep="grep --color=auto"
 export GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export LC_ALL=en_US.UTF-8
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# export EDITOR=vim
+
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # aliases
 
@@ -26,6 +28,10 @@ alias g-gn='git grep --name-only'
 
 alias ls='ls -l'
 alias lsa='ls -a'
+
+### yarn
+alias y-d='yarn run dev'
+alias y-t='yarn run test'
 
 ### vpn fix
 alias f-v='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
@@ -90,8 +96,9 @@ alias d-pr='p-dkr && ./docker_prepare.sh'
 alias d-pn='p-dkr && ./docker_prune.sh'
 
 alias d-l='p-dkr && ./docker_logs.sh'
-alias d-la1='p-dkr && ./docker_logs.sh api1'
-alias d-la2='p-dkr && ./docker_logs.sh api2'
+alias d-la='p-dkr && ./docker_logs.sh api1'
+# alias d-la1='p-dkr && ./docker_logs.sh api1'
+# alias d-la2='p-dkr && ./docker_logs.sh api2'
 alias d-lw='p-dkr && ./docker_logs.sh web-app'
 alias d-ld='p-dkr && ./docker_logs.sh dashboard'
 
@@ -103,6 +110,8 @@ alias d-cd='p-dkr && ./docker_connect.sh dashboard'
 alias d-cp='p-dkr && docker-compose build'
 
 alias d-r='p-dkr && ./restart_container.sh'
+alias d-ra='p-dkr && ./restart_container.sh api1 && ./restart_container.sh api2'
+alias d-rla='p-dkr && ./restart_container.sh api1 && ./restart_container.sh api2 && d-la1'
 alias d-ra1='p-dkr && ./restart_container.sh api1'
 alias d-ra2='p-dkr && ./restart_container.sh api2'
 alias d-rw='p-dkr && ./restart_container.sh web-app'

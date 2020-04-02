@@ -54,7 +54,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set timeoutlen=1000 ttimeoutlen=0
 set background=dark
-:set virtualedit=all
+set virtualedit=all
 
 highlight Comment cterm=italic
 
@@ -62,6 +62,7 @@ let g:indentLine_color_term=244
 let g:limelight_conceal_ctermfg=243
 let mapleader=" "
 let g:airline_extensions = []
+let g:netrw_altfile = 1
 " let g:airline_powerline_fonts=1
 
 nnoremap <leader>q :q<CR>
@@ -115,8 +116,14 @@ nnoremap K 7gk
 vnoremap J 7gj
 vnoremap K 7gk
 
+" move to beginning of line
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
+
 nnoremap M M0
-nnoremap G Gzz
+nnoremap <c-G> Gzz
 
 " page navigation should shift cursor to start of line
 nnoremap <C-u> <C-u>
@@ -126,9 +133,6 @@ nnoremap <C-f> <C-f>M0
 
 nnoremap zt ztM0
 nnoremap zb zbM0
-
-nnoremap # #zz
-nnoremap * *zz
 
 nnoremap <F8> <C-f>M0
 nnoremap <F9> <C-b>M0
@@ -143,26 +147,29 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
-inoremap <F8> <down>
-inoremap <F9> <up>
-inoremap <F7> <left>
-inoremap <F10> <right>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
 
-" move to beginning of line
-nnoremap H ^
-nnoremap L $
-vnoremap H ^
-vnoremap L $
+" inoremap <F8> <down>
+" inoremap <F9> <up>
+" inoremap <F7> <left>
+" inoremap <F10> <right>
 
 " centre text when searching
 nnoremap n nzz
 nnoremap N Nzz
 
+" nnoremap # #zz
+" nnoremap * *zz
+
 " search curr word without jump
-nnoremap _ *``
+nnoremap _ *<C-o>
+nnoremap <C-_> *zz
 
 nnoremap + :set hlsearch<CR>
-nnoremap = :nohlsearch<CR>
+nnoremap <F6> :nohlsearch<CR>
 
 nnoremap <NUL> i<space><esc>
 nnoremap <C-i> i <Esc>r
