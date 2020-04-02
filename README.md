@@ -15,6 +15,10 @@ tracks my dotfiles
 1. add `source ~/.dotfiles/.bash_profile_user` into your .bashrc
 2. add `source ~/.dotfiles/.bash_profile_user_linux` into your .bashrc
 
+1. add 2 lines below into your .gitconfig
+    `[core]
+        excludesfile = /Users/aswin/.dotfiles/.gitignore_global`
+
 ## create symlinks
 1. `ln -sv ~/.dotfiles/.vimrc ~`
 2. `ln -sv ~/.dotfiles/.tmux.conf ~`
