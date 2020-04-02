@@ -17,7 +17,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
-Plug '/usr/local/opt/fzf'
+" Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'justinmk/vim-sneak'
 Plug 'tmsvg/pear-tree'
 Plug 'vim-airline/vim-airline'
@@ -52,6 +53,7 @@ set foldlevelstart=10
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set timeoutlen=1000 ttimeoutlen=0
+set background=dark
 :set virtualedit=all
 
 highlight Comment cterm=italic
