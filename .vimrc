@@ -17,10 +17,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
-" Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'justinmk/vim-sneak'
-Plug 'tmsvg/pear-tree'
+" Plug 'tmsvg/pear-tree'  " need find alternative style
 Plug 'vim-airline/vim-airline'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'jiangmiao/auto-pairs'
@@ -65,23 +65,25 @@ let g:airline_extensions = []
 let g:netrw_altfile = 1
 " let g:airline_powerline_fonts=1
 
+nnoremap <leader>w :update<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 nnoremap <leader>r :e!<CR>
 nnoremap <leader>d :w !diff % -<CR>
-nnoremap <leader>l :ls<CR>
+nnoremap <leader>l :Ls<CR>
 nnoremap <leader>a :bad ./
 nnoremap <leader>e :e ./
+nnoremap <leader>E :e<space>
 nnoremap <leader>m :marks<CR>
 nnoremap <leader>v <C-w>H
 nnoremap <leader>h <C-w>K
-nnoremap <leader>p :let @+ = expand("%:p")<CR>
+nnoremap <leader>F :let @+ = expand("%:p")<CR>
 nnoremap <leader>g :g/
 nnoremap <leader>f :FZF<CR>
 
 nnoremap <leader>b :b<space>
 nnoremap <leader>, :b #<CR>
-nnoremap <leader>D :bd<space>
+nnoremap <leader>D :bd *<C-a><CR>:b #<CR>
 nnoremap <leader>1 :b 1<CR>
 nnoremap <leader>2 :b 2<CR>
 nnoremap <leader>3 :b 3<CR>
@@ -92,17 +94,18 @@ nnoremap <leader>7 :b 7<CR>
 nnoremap <leader>8 :b 8<CR>
 nnoremap <leader>9 :b 9<CR>
 nnoremap <leader>0 :b 1
+noremap <silent> <leader>j :call AddEmptyLineBelow()<CR>
+noremap <silent> <leader>k :call AddEmptyLineAbove()<CR>
+noremap <silent> <leader><CR> i<CR><Esc>k$
 " nnoremap <leader>n :delmarks A-Z0-9<CR>
 " nnoremap <leader>s :source ~/.vimrc<CR>
-" select just pasted text
-noremap <expr> <leader>P '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" saving
-nnoremap <F1> :update<CR>
+" select just pasted text
+noremap <expr> <leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 nnoremap <BS> X
-nnoremap ) "0p
-vnoremap ) "0p
+nnoremap <C-p> "0p
+vnoremap <C-p> "0p
 
 " move vertically by visual line
 nnoremap j gj
@@ -134,13 +137,13 @@ nnoremap <C-f> <C-f>M0
 nnoremap zt ztM0
 nnoremap zb zbM0
 
-nnoremap <F8> <C-f>M0
-nnoremap <F9> <C-b>M0
+nnoremap <F10> <C-f>M0
+nnoremap <F11> <C-b>M0
 
-nnoremap <F2> <C-e>j
-nnoremap <F3> 7<C-e>7j
-nnoremap <F4> 7<C-y>7k
-nnoremap <F5> <C-y>k
+nnoremap <F1> 7<C-e>7j
+nnoremap <F2> 7<C-y>7k
+nnoremap <F3> <C-e>j
+nnoremap <F4> <C-y>k
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -164,19 +167,41 @@ nnoremap N Nzz
 " nnoremap # #zz
 " nnoremap * *zz
 
-" search curr word without jump
+" highlights
 nnoremap _ *<C-o>
-nnoremap <C-_> *zz
-
-nnoremap + :set hlsearch<CR>
-nnoremap <F6> :nohlsearch<CR>
+nnoremap ) :set hlsearch<CR>
+nnoremap + :nohlsearch<CR>
 
 nnoremap <NUL> i<space><esc>
-nnoremap <C-i> i <Esc>r
+nnoremap I i <Esc>r
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 autocmd VimResized * exe "normal! \<c-w>="
+
+" *** COMMANDS ***
+
+command! -bang Ls redir @" | silent ls<bang> | redir END | echo " " |
+\ perl {
+\ my $msg=VIM::Eval('@"');
+\ my %list=();
+\ my $key, $value;
+\ while($msg =~ m/(.*?line\s+\d+)/g)
+\ {
+\ $value = $1;
+\ $value =~ m/"([^"]+)"/;
+\ $key = $1;
+\ ($^O =~ /mswin/i) and $key = lc($key);
+\ $list{$key} = $value;
+\ }
+\ my $msg = '';
+\ for $key (sort keys %list)
+\ {
+\ $msg .= "$list{$key}\n";
+\ }
+\ VIM::Msg($msg);
+\ }
+\ <CR>
 
 " *** FUNCTIONS ***
 
@@ -218,6 +243,24 @@ function! AddEmptyLineAbove()
   let &scrolloff = l:scrolloffsave
 endfunction
 
-noremap <silent> <F10> :call AddEmptyLineBelow()<CR>
-noremap <silent> <F12> :call AddEmptyLineAbove()<CR>
 autocmd BufEnter * call SetTerminalTitle()
+
+" FZF
+" command! FZFMru call fzf#run({
+" \  'source':  v:oldfiles,
+" \  'sink':    'e',
+" \  'options': '-m -x +s',
+" \  'down':    '40%'})
+
+" command! FZFMru call fzf#run({
+" \ 'source':  reverse(s:all_files()),
+" \ 'sink':    'edit',
+" \ 'options': '-m -x +s',
+" \ 'down':    '40%' })
+
+" function! s:all_files()
+"   return extend(
+"   \ filter(copy(v:oldfiles),
+"   \        "v:val !~ 'fugitive:\\|NERD_tree\\|^/tmp/\\|.git/'"),
+"   \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
+" endfunction

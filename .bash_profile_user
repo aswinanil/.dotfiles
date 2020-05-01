@@ -34,10 +34,10 @@ alias y-d='yarn run dev'
 alias y-t='yarn run test'
 
 ### vpn fix
-alias f-v='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
+alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
 
 ### fzf
-alias v-f='vim $(fzf)'
+alias fzv='vim $(fzf)'
 
 ### print colors
 alias print-colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
@@ -135,7 +135,14 @@ f-1() {
         find ./ -iname *"$1"*;
     fi
 }
-
+f-d() {
+    if [ "$2" ]
+    then
+        find "$1" -iname *"$2"* -type f -delete;
+    else
+        find ./ -iname *"$1"* -type f -delete;;
+    fi
+}
 # show git branch in iterm
 
 ## paste following in Profiles > General > Badge: \(session.path) @ \(user.gitBranch)
