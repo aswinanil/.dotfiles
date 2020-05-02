@@ -17,7 +17,7 @@ tracks my dotfiles
 
 1. add 2 lines below into your .gitconfig
     `[core]
-        excludesfile = /Users/aswin/.dotfiles/.gitignore_global`
+        excludesfile = ~/.dotfiles/.gitignore_global`
 
 ## create symlinks
 1. `ln -sv ~/.dotfiles/.vimrc ~`

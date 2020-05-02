@@ -140,7 +140,7 @@ f-d() {
     then
         find "$1" -iname *"$2"* -type f -delete;
     else
-        find ./ -iname *"$1"* -type f -delete;;
+        find ./ -iname *"$1"* -type f -delete;
     fi
 }
 # show git branch in iterm
