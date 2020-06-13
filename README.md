@@ -1,6 +1,4 @@
-# about
-tracks my dotfiles
-- .vimrc
+# about tracks my dotfiles - .vimrc
 - .bash_profile_user
 - markdown.vim
 
@@ -22,18 +20,31 @@ tracks my dotfiles
 ## create symlinks
 1. `ln -sv ~/.dotfiles/.vimrc ~`
 2. `ln -sv ~/.dotfiles/.tmux.conf ~`
-3. `ln -sv ~/.dotfiles/markdown.vim ~/.vim/after/ftplugin`
+3. markdown
+    a. `mkdir ~/.vim`
+    b. `mkdir ~/.vim/after`
+    c. `ln -sv ~/.dotfiles/markdown.vim ~/.vim/after/ftplugin`
 
 ## install packages
+### vim
 1. setup vim plug
     a. download plug.vim from https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    b. mv ~/Downloads/plu.vim ~/.vim/autoload
-1. `brew install fzf`
-2. `$(brew --prefix)/opt/fzf/install`
-4. `brew install ripgrep`
-5. setup gitmux
+    b. `mkdir ~/.vim/autoload`
+    b. `mv ~/Downloads/plug.vim ~/.vim/autoload/`
+2. intall vim packages
+    a. `vim ~/.vimrc`
+    b. `:PlugInstall`
+
+### use package manager to install
+3. fzf
+4. ripgrep
+5. tmux
+
+### improve tmux
+6. setup gitmux
     a. download binary from https://github.com/arl/gitmux/releases/tag/v0.4.1
     b. `mv ~/Downloads/gitmux /usr/local/bin`
+7. git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## enable italics in tmux
 1. `tic -x tmux.terminfo`
