@@ -1,9 +1,21 @@
 # Config
-source /usr/share/doc/fzf/examples/key-bindings.bash
+# source /usr/share/doc/fzf/examples/key-bindings.bash
+
+## env variables
+export N_PREFIX="$HOME/.n"
+export PATH=$N_PREFIX/bin:$PATH
 
 # aliases
 
 ## misc
+
+### yarn
+alias y-i='sudo yarn run'
+alias y-d='sudo yarn run dev'
+alias y-t='sudo yarn run test'
+
+### VPN
+alias vpn="sudo openvpn --config ~/Downloads/aswin.ovpn"
 
 ### linux
 alias sudo='sudo '
