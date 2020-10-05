@@ -4,8 +4,12 @@ alias grep="grep --color=auto"
 export GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export LC_ALL=en_US.UTF-8
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # export EDITOR=vim
+
+## env variables
+export N_PREFIX="$HOME/.n"
+export PATH=$N_PREFIX/bin:$PATH
 
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
@@ -38,6 +42,7 @@ alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0
 
 ### fzf
 alias fzv='vim $(fzf)'
+alias fzn='nvim $(fzf)'
 
 ### print colors
 alias print-colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
@@ -61,17 +66,38 @@ alias g-d1='git diff --ignore-space-at-eol -b -w --ignore-blank-lines'
 alias g-ds='git diff --ignore-space-at-eol -b -w -U27 --ignore-blank-lines --staged'
 alias g-ds7='git diff --ignore-space-at-eol -b -w -U7 --ignore-blank-lines --staged'
 alias g-ds1='git diff --ignore-space-at-eol -b -w --ignore-blank-lines --staged'
+
+alias g-dw='g-d src/templates/ src/js/ src/css/'
+alias g-dt='g-d src/templates/'
+alias g-dj='g-d src/js/'
+alias g-dc='g-d src/css/'
+alias g-dua='g-d src/api src/test'
+alias g-da='g-d src/api'
+alias g-dt='g-d src/test'
+
+alias g-a='git add'
+alias g-au='git add -u'
+alias g-auw='git add src/templates/ src/js/ src/css/'
+alias g-at='git add src/templates/'
+alias g-aj='git add src/js/'
+alias g-ac='git add src/css/'
+alias g-aua='git add api/ test/'
+alias g-aa='git add api/'
+# alias g-at='git add test/'
+
 alias g-s='git status'
-alias g-sh='git show -U27'
-alias g-sh1='git show'
-alias g-shh='git show -U27 HEAD'
-alias g-shh1='git show HEAD'
+alias g-sh1='git show --ignore-space-at-eol -b -w --ignore-blank-lines'
+alias g-sh='g-sh1 -U27 '
+alias g-shh='g-s HEAD'
+alias g-shh1='g-sh1 HEAD'
+
 alias g-st='git stash'
 alias g-stl='git stash list'
 alias g-sts='git stash show -p'
 alias g-std='git stash drop 0'
 alias g-stp='git stash push -m'
 alias g-sta='git stash apply'
+
 alias g-l='git log'
 alias g-lm='git log --author="aswin"'
 alias g-c='git checkout'
@@ -81,10 +107,10 @@ alias g-b='git branch'
 alias g-pl='git pull'
 alias g-ps='git push'
 alias g-m='git merge'
-alias g-a='git add'
-alias g-au='git add -u'
+
 alias g-r='git reset'
-alias g-rh='git reset --hard'
+alias g-rh='git reset HEAD'
+alias g-rs='git restore --staged'
 alias g-rb='git rebase -i'
 alias g-uis='git update-index --skip-worktree'
 alias g-ui='git update-index --no-skip-worktree'
@@ -97,6 +123,7 @@ alias d-pn='p-dkr && ./docker_prune.sh'
 
 alias d-l='p-dkr && ./docker_logs.sh'
 alias d-la='p-dkr && ./docker_logs.sh api1'
+alias d-la2='p-dkr && ./docker_logs.sh api2'
 # alias d-la1='p-dkr && ./docker_logs.sh api1'
 # alias d-la2='p-dkr && ./docker_logs.sh api2'
 alias d-lw='p-dkr && ./docker_logs.sh web-app'
@@ -111,7 +138,7 @@ alias d-cp='p-dkr && docker-compose build'
 
 alias d-r='p-dkr && ./restart_container.sh'
 alias d-ra='p-dkr && ./restart_container.sh api1 && ./restart_container.sh api2'
-alias d-rla='p-dkr && ./restart_container.sh api1 && ./restart_container.sh api2 && d-la1'
+alias d-rla='p-dkr && ./restart_container.sh api1 && ./restart_container.sh api2 && d-la'
 alias d-ra1='p-dkr && ./restart_container.sh api1'
 alias d-ra2='p-dkr && ./restart_container.sh api2'
 alias d-rw='p-dkr && ./restart_container.sh web-app'

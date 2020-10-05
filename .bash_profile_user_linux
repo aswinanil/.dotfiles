@@ -1,13 +1,10 @@
 # Config
 # source /usr/share/doc/fzf/examples/key-bindings.bash
 
-## env variables
-export N_PREFIX="$HOME/.n"
-export PATH=$N_PREFIX/bin:$PATH
-
 # aliases
 
 ## misc
+alias gs=''
 
 ### yarn
 alias y-i='sudo yarn run'
@@ -20,6 +17,7 @@ alias vpn="sudo openvpn --config ~/Downloads/aswin.ovpn"
 ### linux
 alias sudo='sudo '
 alias kk='sudo '
+stty -ixon
 
 ## docker
 alias d-p='sudo docker ps'
@@ -28,6 +26,7 @@ alias d-pn='p-dkr && sudo ./docker_prune.sh'
 
 alias d-l='p-dkr && sudo ./docker_logs.sh'
 alias d-la='p-dkr && sudo ./docker_logs.sh api1'
+alias d-la2='p-dkr && sudo ./docker_logs.sh api2'
 alias d-lw='p-dkr && sudo ./docker_logs.sh web-app'
 alias d-ld='p-dkr && sudo ./docker_logs.sh dashboard'
 
@@ -40,7 +39,7 @@ alias d-cp='p-dkr && sudo docker-compose build'
 
 alias d-r='p-dkr && sudo ./restart_container.sh'
 alias d-ra='p-dkr && sudo ./restart_container.sh api1 && ./restart_container.sh api2'
-alias d-rla='p-dkr && sudo ./restart_container.sh api1 && ./restart_container.sh api2 && d-la1'
+alias d-rla='p-dkr && sudo ./restart_container.sh api1 && ./restart_container.sh api2 && d-la'
 alias d-ra1='p-dkr && sudo ./restart_container.sh api1'
 alias d-ra2='p-dkr && sudo ./restart_container.sh api2'
 alias d-rw='p-dkr && sudo ./restart_container.sh web-app'
