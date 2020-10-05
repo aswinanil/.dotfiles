@@ -17,15 +17,18 @@ Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
-Plug '/usr/local/opt/fzf'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'justinmk/vim-sneak'
 " Plug 'tmsvg/pear-tree'  " need find alternative style
 Plug 'vim-airline/vim-airline'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'tpope/vim-fugitive'
-" Plug 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
+" Plug 'fholgado/minibufexpl.vim'
+" Plug 'jeetsukumaran/vim-buffergator'
+Plug 'vim-scripts/bufexplorer.zip'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -70,7 +73,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 nnoremap <leader>r :e!<CR>
 nnoremap <leader>d :w !diff % -<CR>
-nnoremap <leader>l :Ls<CR>
+" nnoremap <leader>l :Ls<CR>
+nnoremap <leader>l :BufExplorer<CR>
 nnoremap <leader>a :bad ./
 nnoremap <leader>e :e ./
 nnoremap <leader>E :e<space>
