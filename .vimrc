@@ -72,7 +72,7 @@ nnoremap <leader>w :update<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 nnoremap <leader>r :e!<CR>
-nnoremap <leader>d :w !diff % -<CR>
+nnoremap <leader>D :w !diff % -<CR>
 " nnoremap <leader>l :Ls<CR>
 nnoremap <leader>l :BufExplorer<CR>
 nnoremap <leader>a :bad ./
@@ -84,10 +84,13 @@ nnoremap <leader>h <C-w>K
 nnoremap <leader>F :let @+ = expand("%:p")<CR>
 nnoremap <leader>g :g/
 nnoremap <leader>f :FZF<CR>
+nnoremap <leader>c o<CR><Esc>ccconsole.log();<Esc>o<Esc>kf)i
+nnoremap <leader>C o<CR><Esc>ccconsole.log("");<Esc>o<Esc>kf"li
+nnoremap <leader>d o<CR><Esc>ccdebugger;<Esc>o<Esc>k0
 
 nnoremap <leader>b :b<space>
 nnoremap <leader>, :b #<CR>
-nnoremap <leader>D :bd *<C-a><CR>:b #<CR>
+" nnoremap <leader>D :bd *<C-a><CR>:b #<CR>
 nnoremap <leader>1 :b 1<CR>
 nnoremap <leader>2 :b 2<CR>
 nnoremap <leader>3 :b 3<CR>
