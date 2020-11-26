@@ -1,5 +1,8 @@
-# about tracks my dotfiles - .vimrc
+# about
+tracks my dotfiles:
+- .vimrc
 - .bash_profile_user
+- .tmux.conf
 - markdown.vim
 
 # instructions
@@ -42,8 +45,9 @@
 
 ### improve tmux
 6. setup gitmux
-    a. download binary from https://github.com/arl/gitmux/releases/tag/v0.4.1
-    b. `mv ~/Downloads/gitmux /usr/local/bin`
+    a. download from https://github.com/arl/gitmux/releases/
+    b. extract
+    b. `sudo mv gitmux /usr/local/bin`
 7. git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## enable italics in tmux
