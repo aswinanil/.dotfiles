@@ -48,8 +48,8 @@ set clipboard=unnamed
 set bs=2
 set breakindent
 set hlsearch
-set undofile
-set undodir=/Users/aswin/.vim/undohistory/
+" set undofile
+" set undodir=/Users/aswin/.vim/undohistory/
 set foldmethod=indent
 set foldnestmax=10
 set foldlevelstart=10
