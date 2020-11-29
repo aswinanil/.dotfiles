@@ -44,7 +44,7 @@ set autoindent
 set smartindent
 set ignorecase
 set incsearch
-set clipboard=unnamed
+set clipboard=unnamedplus
 set bs=2
 set breakindent
 set hlsearch
