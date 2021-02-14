@@ -29,6 +29,8 @@ Plug 'mustache/vim-mustache-handlebars'
 " Plug 'fholgado/minibufexpl.vim'
 " Plug 'jeetsukumaran/vim-buffergator'
 Plug 'vim-scripts/bufexplorer.zip'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
