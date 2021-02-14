@@ -84,8 +84,8 @@ nnoremap <leader>h <C-w>K
 nnoremap <leader>F :let @+ = expand("%:p")<CR>
 nnoremap <leader>g :g/
 nnoremap <leader>f :FZF<CR>
-nnoremap <leader>c o<CR><Esc>ccconsole.log();<Esc>o<Esc>kf)i
-nnoremap <leader>C o<CR><Esc>ccconsole.log("");<Esc>o<Esc>kf"li
+nnoremap <leader>C o<Esc>ccconsole.log();<Esc>F)i
+nnoremap <leader>c o<Esc>ccconsole.log("");<Esc>F"i
 nnoremap <leader>d o<CR><Esc>ccdebugger;<Esc>o<Esc>k0
 
 nnoremap <leader>b :b<space>
