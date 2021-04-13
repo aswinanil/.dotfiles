@@ -52,3 +52,11 @@ tracks my dotfiles:
 
 ## enable italics in tmux
 1. `tic -x tmux.terminfo`
+
+## nvim
+1. `mkdir ~/.config/nvim`
+2. `nvim .config/nvim/init.vim`
+3. paste:
+    set runtimepath+=~/.vim,~/.vim/after
+    set packpath+=~/.vim
+    source ~/.vimrc
