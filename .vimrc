@@ -31,6 +31,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-endwise'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -86,9 +87,9 @@ nnoremap <leader>h <C-w>K
 nnoremap <leader>F :let @+ = expand("%:p")<CR>
 nnoremap <leader>g :g/
 nnoremap <leader>f :FZF<CR>
-nnoremap <leader>C o<Esc>ccconsole.log();<Esc>F)i
-nnoremap <leader>c o<Esc>ccconsole.log("");<Esc>F"i
-nnoremap <leader>d o<CR><Esc>ccdebugger;<Esc>o<Esc>k0
+nnoremap <leader>c o<Esc>ccconsole.log();<Esc>F)i
+nnoremap <leader>C o<Esc>ccconsole.log("");<Esc>F"i
+nnoremap <leader>d o<Esc>ccdebugger;<Esc>0
 
 nnoremap <leader>b :b<space>
 nnoremap <leader>, :b #<CR>
@@ -116,6 +117,48 @@ nnoremap <BS> X
 nnoremap <C-p> "0p
 vnoremap <C-p> "0p
 
+" inoremap <C-n> <Esc>ylpi
+inoremap ) ()
+inoremap } {}
+inoremap ] []
+inoremap > <>
+
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
+inoremap < <><Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+
+inoremap => =><space>
+
+inoremap (<Esc> (
+inoremap )<Esc> )
+inoremap {<Esc> {
+inoremap }<Esc> }
+inoremap [<Esc> [
+inoremap ]<Esc> ]
+inoremap <<Esc> <
+inoremap ><Esc> >
+inoremap "<Esc> "
+inoremap '<Esc> '
+
+inoremap (<CR> (<CR>)<Esc>O<Esc>cc
+inoremap {<CR> {<CR>}<Esc>O<Esc>cc
+inoremap [<CR> [<CR>]<Esc>O<Esc>cc
+inoremap <<CR> <<CR>><Esc>O<Esc>cc
+
+inoremap (; (<CR>);<Esc>O<Esc>cc
+inoremap {; {<CR>};<Esc>O<Esc>cc
+inoremap [; [<CR>];<Esc>O<Esc>cc
+inoremap <; <<CR>>;<Esc>O<Esc>cc
+
+inoremap (, (<CR>),<CR><Esc>kO<Esc>cc
+inoremap {, {<CR>},<CR><Esc>kO<Esc>cc
+inoremap [, [<CR>],<CR><Esc>kO<Esc>cc
+inoremap <, {<CR>>,<CR><Esc>kO<Esc>cc
+
+
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -138,8 +181,8 @@ nnoremap M M0
 nnoremap <c-G> Gzz
 
 " page navigation should shift cursor to start of line
-nnoremap <C-u> <C-u>
-nnoremap <C-d> <C-d>
+nnoremap <C-u> 7<C-y>7k
+nnoremap <C-d> 7<C-e>7j
 nnoremap <C-b> <C-b>M0
 nnoremap <C-f> <C-f>M0
 
@@ -149,10 +192,10 @@ nnoremap zb zbM0
 nnoremap <F10> <C-f>M0
 nnoremap <F11> <C-b>M0
 
-nnoremap <F1> 7<C-e>7j
-nnoremap <F2> 7<C-y>7k
-nnoremap <F3> <C-e>j
-nnoremap <F4> <C-y>k
+" nnoremap <F1> 7<C-e>7j
+" nnoremap <F2> 7<C-y>7k
+" nnoremap <F3> <C-e>j
+" nnoremap <F4> <C-y>k
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -177,7 +220,7 @@ nnoremap N Nzz
 " nnoremap * *zz
 
 " highlights
-nnoremap _ *<C-o>
+nnoremap _ *##*
 nnoremap ) :set hlsearch<CR>
 nnoremap + :nohlsearch<CR>
 
