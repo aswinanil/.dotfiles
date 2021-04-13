@@ -37,6 +37,7 @@ alias lsa='ls -a'
 ### yarn
 alias y-d='yarn run dev'
 alias y-t='yarn run test'
+alias y-awa='p-awa && yarn && y-d'
 
 ### vpn fix
 alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
@@ -77,17 +78,17 @@ alias g-dua='g-d src/api src/test'
 alias g-da='g-d src/api'
 alias g-dt='g-d src/test'
 
-alias g-a='git add'
+alias g-a='git add -v'
+alias g-as='g-a && g-s'
 alias g-au='git add -u'
-alias g-auw='git add src/templates/ src/js/ src/css/'
-alias g-at='git add src/templates/'
-alias g-aj='git add src/js/'
-alias g-ac='git add src/css/'
-alias g-aua='git add api/ test/'
-alias g-aa='git add api/'
+alias g-auw='git add src/templates/ src/js/ src/css/ && g-s'
+alias g-at='git add src/templates/ && g-s'
+alias g-aj='git add src/js/ && g-s'
+alias g-ac='git add src/css/ && g-s'
+alias g-aua='git add api/ test/ && g-s'
+alias g-aa='git add api/ && g-s'
 # alias g-at='git add test/'
 
-alias g-s='git status'
 alias g-sh1='git show --ignore-space-at-eol -b -w --ignore-blank-lines'
 alias g-sh='g-sh1 -U27 '
 alias g-shh='g-sh HEAD'
@@ -100,15 +101,17 @@ alias g-std='git stash drop 0'
 alias g-stp='git stash push -m'
 alias g-sta='git stash apply'
 
+alias g-s='git status'
 alias g-l='git log'
 alias g-lm='git log --author="aswin"'
 alias g-c='git checkout'
 alias g-cm='git commit -m'
 alias g-cma='git commit --amend'
-alias g-b='git branch'
 alias g-pl='git pull'
 alias g-ps='git push'
 alias g-m='git merge'
+alias g-b='git branch'
+alias g-bf='g-b | grep $1'
 
 alias g-r='git reset'
 alias g-rh='git reset HEAD'
@@ -154,6 +157,7 @@ alias d-rbd='p-dkr && ./rebuild_container.sh dashboard'
 
 alias d-sa='p-dkr && ./start.sh'
 alias d-so='p-dkr && ./stop.sh'
+alias d-rs='p-dkr && d-pr && d-so && d-pr && d-sa && d-pr && d-la'
 
 # functions
 f-1() {
