@@ -85,7 +85,7 @@ alias g-auw='git add src/templates/ src/js/ src/css/ && g-s'
 alias g-at='git add src/templates/ && g-s'
 alias g-aj='git add src/js/ && g-s'
 alias g-ac='git add src/css/ && g-s'
-alias g-aua='git add api/ test/ && g-s'
+alias g-aua='git add api/ modelMethods/ test/ && g-s'
 alias g-aa='git add api/ && g-s'
 # alias g-at='git add test/'
 

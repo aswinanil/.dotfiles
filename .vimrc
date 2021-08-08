@@ -87,9 +87,13 @@ nnoremap <leader>h <C-w>K
 nnoremap <leader>F :let @+ = expand("%:p")<CR>
 nnoremap <leader>g :g/
 nnoremap <leader>f :FZF<CR>
+" nnoremap <leader>c o<Esc>ccconsole.log();<Esc>F)i
+" nnoremap <leader>C o<esc>ccconsole.log("");<esc>F"i
 nnoremap <leader>c o<Esc>ccconsole.log();<Esc>F)i
 nnoremap <leader>C o<Esc>ccconsole.log("");<Esc>F"i
+inoremap <C-c> console.log();<Esc>F)i
 nnoremap <leader>d o<Esc>ccdebugger;<Esc>0
+inoremap <C-d> debugger;<Esc>0
 
 nnoremap <leader>b :b<space>
 nnoremap <leader>, :b #<CR>
@@ -104,6 +108,7 @@ nnoremap <leader>7 :b 7<CR>
 nnoremap <leader>8 :b 8<CR>
 nnoremap <leader>9 :b 9<CR>
 nnoremap <leader>0 :b 1
+
 noremap <silent> <leader>j :call AddEmptyLineBelow()<CR>
 noremap <silent> <leader>k :call AddEmptyLineAbove()<CR>
 noremap <silent> <leader><CR> i<CR><Esc>k$
@@ -113,35 +118,38 @@ noremap <silent> <leader><CR> i<CR><Esc>k$
 " select just pasted text
 noremap <expr> <leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 
+nmap gcp yypkgccj
+
 nnoremap <BS> X
 nnoremap <C-p> "0p
 vnoremap <C-p> "0p
 
 " inoremap <C-n> <Esc>ylpi
-inoremap ) ()
-inoremap } {}
-inoremap ] []
-inoremap > <>
+inoremap )) ()
+inoremap ]] []
+inoremap }} {}
+" inoremap > <>  "messes up =>
 
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap [ []<Esc>i
-inoremap < <><Esc>i
-inoremap " ""<Esc>i
-inoremap ' ''<Esc>i
+inoremap (( ()<Esc>i
+inoremap {{ {}<Esc>i
+inoremap [[ []<Esc>i
+inoremap << <><Esc>i
+inoremap "" ""<Esc>i
+inoremap '' ''<Esc>i
 
-inoremap => =><space>
+" inoremap => =><space>  "messes up ==
 
-inoremap (<Esc> (
-inoremap )<Esc> )
-inoremap {<Esc> {
-inoremap }<Esc> }
-inoremap [<Esc> [
-inoremap ]<Esc> ]
-inoremap <<Esc> <
-inoremap ><Esc> >
-inoremap "<Esc> "
-inoremap '<Esc> '
+" inoremap (<Esc> (<Esc>
+" inoremap )<Esc> )<Esc>
+" inoremap {<Esc> {<Esc>
+" inoremap }<Esc> }<Esc>
+" inoremap [<Esc> [<Esc>
+" inoremap ]<Esc> ]<Esc>
+" inoremap <<Esc> <<Esc>
+" inoremap ><Esc> ><Esc>
+" inoremap \"<Esc> "<Esc>
+" inoremap '<Esc> '<Esc>
+
 
 inoremap (<CR> (<CR>)<Esc>O<Esc>cc
 inoremap {<CR> {<CR>}<Esc>O<Esc>cc
@@ -153,11 +161,14 @@ inoremap {; {<CR>};<Esc>O<Esc>cc
 inoremap [; [<CR>];<Esc>O<Esc>cc
 inoremap <; <<CR>>;<Esc>O<Esc>cc
 
-inoremap (, (<CR>),<CR><Esc>kO<Esc>cc
-inoremap {, {<CR>},<CR><Esc>kO<Esc>cc
-inoremap [, [<CR>],<CR><Esc>kO<Esc>cc
-inoremap <, {<CR>>,<CR><Esc>kO<Esc>cc
-
+" inoremap (, (<CR>),<CR><Esc>kO<Esc>cc
+" inoremap {, {<CR>},<CR><Esc>kO<Esc>cc
+" inoremap [, [<CR>],<CR><Esc>kO<Esc>cc
+" inoremap <, {<CR>>,<CR><Esc>kO<Esc>cc
+inoremap (, (<CR>),<Esc>O<Esc>cc
+inoremap {, {<CR>},<Esc>O<Esc>cc
+inoremap [, [<CR>],<Esc>O<Esc>cc
+inoremap <, {<CR>>,<Esc>O<Esc>cc
 
 " move vertically by visual line
 nnoremap j gj
@@ -226,6 +237,7 @@ nnoremap + :nohlsearch<CR>
 
 nnoremap <NUL> i<space><esc>
 nnoremap I i <Esc>r
+nmap <leader><space> I<space>
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
