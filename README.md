@@ -26,7 +26,11 @@ tracks my dotfiles:
 3. markdown
     a. `mkdir ~/.vim`
     b. `mkdir ~/.vim/after`
-    c. `ln -sv ~/.dotfiles/markdown.vim ~/.vim/after/ftplugin`
+    c. `mkdir ~/.vim/after/ftplugin`
+    d. `ln -sv ~/.dotfiles/markdown.vim ~/.vim/after/ftplugin`
+4. indent
+    c. `mkdir ~/.vim/after/indent`
+    c. `ln -sv ~/.dotfiles/sass.vim ~/.vim/after/indent`
 
 ## install packages
 ### vim
