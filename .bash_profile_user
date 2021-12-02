@@ -35,12 +35,12 @@ alias ls='ls -l'
 alias lsa='ls -a'
 
 ### yarn
-alias y-d='yarn run dev'
+alias y-d='yarn && yarn run dev'
 alias y-t='yarn run test'
 alias y-awa='p-awa && yarn && y-d'
 
 ### vpn fix
-alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'  # TODO: test this next time VPN fails
+alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'
 
 ### fzf
 alias fzv='vim $(fzf)'
@@ -97,7 +97,8 @@ alias g-shh1='g-sh1 HEAD'
 alias g-st='git stash'
 alias g-stl='git stash list'
 alias g-sts='git stash show -p'
-alias g-std='git stash drop 0'
+alias g-std0='git stash drop 0'
+alias g-std='git stash drop'
 alias g-stp='git stash push -m'
 alias g-sta='git stash apply'
 
@@ -120,6 +121,8 @@ alias g-rb='git rebase -i'
 alias g-uis='git update-index --skip-worktree'
 alias g-ui='git update-index --no-skip-worktree'
 alias g-uil='git ls-files -v | grep "^S"'
+
+alias g-su='git submodule update --init --recursive'
 
 ## docker
 alias d-p='docker ps'
