@@ -35,6 +35,7 @@ alias d-ca='p-dkr && sudo ./docker_connect.sh api1'
 alias d-cw='p-dkr && sudo ./docker_connect.sh web-app'
 alias d-cd='p-dkr && sudo ./docker_connect.sh dashboard'
 
+
 alias d-cp='p-dkr && sudo docker-compose build'
 
 alias d-r='p-dkr && sudo ./restart_container.sh'

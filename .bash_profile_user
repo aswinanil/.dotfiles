@@ -46,6 +46,9 @@ alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0
 alias fzv='vim $(fzf)'
 alias fzn='nvim $(fzf)'
 
+### software
+alias teams='~/programs/ms-teams/teams_1.4.00.26453_amd64/usr/bin/teams'
+
 ### print colors
 alias print-colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
 
@@ -55,6 +58,7 @@ alias p-dbd='cd ~/code/pigeonlab/dashboard'
 alias p-api='cd ~/code/pigeonlab/api'
 alias p-dbv='cd ~/code/pigeonlab/dbv'
 alias p-dkr='cd ~/code/pigeonlab/docker-main'
+alias p-mst='cd ~/code/pigeonlab/ms-teams'
 alias p-lab='cd ~/code/pigeonlab/'
 
 alias notes='cd ~/Google\ Drive/GD\ personal/notes/pigeonlab'
@@ -179,6 +183,13 @@ f-d() {
         find ./ -iname *"$1"* -type f -delete;
     fi
 }
+d-cc() {
+    if [ "$1" ]
+    then
+        sudo docker exec -it "$1" /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
+    fi
+}
+
 # show git branch in iterm
 
 ## paste following in Profiles > General > Badge: \(session.path) @ \(user.gitBranch)
