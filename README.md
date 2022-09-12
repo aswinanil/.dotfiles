@@ -53,6 +53,7 @@ tracks my dotfiles:
     b. extract
     b. `sudo mv gitmux /usr/local/bin`
 7. git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    a. press tmux prefix + `I`
 
 ## enable italics in tmux
 1. `tic -x tmux.terminfo`
