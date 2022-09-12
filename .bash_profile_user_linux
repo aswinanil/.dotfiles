@@ -12,7 +12,7 @@ alias y-d='sudo yarn run dev'
 alias y-t='sudo yarn run test'
 
 ### VPN
-alias vpn="sudo openvpn --config ~/Downloads/aswin-q12021-dev-1.ovpn"
+alias vpn="sudo openvpn --config ~/Downloads/aswin-q22022-dev-1.ovpn"
 
 ### linux
 alias sudo='sudo '

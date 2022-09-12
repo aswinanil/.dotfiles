@@ -29,7 +29,7 @@ alias g-g='git grep -niA29 -B13 $1'
 alias g-gc='git grep -nA29 -B13 $1'
 alias g-g7='git grep -niA7 -B4 $1'
 alias g-g1='git grep -ni $1'
-alias g-gn='git grep --name-only'
+alias g-gn='git grep -ni --name-only'
 
 alias ls='ls -l'
 alias lsa='ls -a'
@@ -45,6 +45,9 @@ alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0
 ### fzf
 alias fzv='vim $(fzf)'
 alias fzn='nvim $(fzf)'
+
+### project specific
+alias lint='yarn run eslint . --ext .js --ignore-pattern "pipeline-common/*" --ignore-pattern "event-schema-js/*"'
 
 ### software
 alias teams='~/programs/ms-teams/teams_1.4.00.26453_amd64/usr/bin/teams'

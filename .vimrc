@@ -73,7 +73,7 @@ let g:netrw_altfile = 1
 
 nnoremap <leader>w :update<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :qa<CR>
+nnoremap <leader>Q :q!<CR>
 nnoremap <leader>r :e!<CR>
 nnoremap <leader>D :w !diff % -<CR>
 " nnoremap <leader>l :Ls<CR>
