@@ -24,23 +24,23 @@ tracks my dotfiles:
 1. `ln -sv ~/.dotfiles/.vimrc ~`
 2. `ln -sv ~/.dotfiles/.tmux.conf ~`
 3. markdown
-    a. `mkdir ~/.vim`
-    b. `mkdir ~/.vim/after`
-    c. `mkdir ~/.vim/after/ftplugin`
-    d. `ln -sv ~/.dotfiles/markdown.vim ~/.vim/after/ftplugin`
+    1. `mkdir ~/.vim`
+    2. `mkdir ~/.vim/after`
+    3. `mkdir ~/.vim/after/ftplugin`
+    4. `ln -sv ~/.dotfiles/markdown.vim ~/.vim/after/ftplugin`
 4. indent
-    c. `mkdir ~/.vim/after/indent`
-    c. `ln -sv ~/.dotfiles/sass.vim ~/.vim/after/indent`
+    1. `mkdir ~/.vim/after/indent`
+    2. `ln -sv ~/.dotfiles/sass.vim ~/.vim/after/indent`
 
 ## install packages
 ### vim
 1. setup vim plug
-    a. download plug.vim from https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    b. `mkdir ~/.vim/autoload`
-    b. `mv ~/Downloads/plug.vim ~/.vim/autoload/`
+    1. download plug.vim from https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    2. `mkdir ~/.vim/autoload`
+    3. `mv ~/Downloads/plug.vim ~/.vim/autoload/`
 2. intall vim packages
-    a. `vim ~/.vimrc`
-    b. `:PlugInstall`
+    1. `vim ~/.vimrc`
+    2. `:PlugInstall`
 
 ### use package manager to install
 3. fzf
@@ -49,11 +49,11 @@ tracks my dotfiles:
 
 ### improve tmux
 6. setup gitmux
-    a. download from https://github.com/arl/gitmux/releases/
-    b. extract
-    b. `sudo mv gitmux /usr/local/bin`
+    1. download from https://github.com/arl/gitmux/releases/
+    2. extract
+    3. `sudo mv gitmux /usr/local/bin`
 7. git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    a. press tmux prefix + `I`
+    1. press tmux prefix + `I`
 
 ## enable italics in tmux
 1. `tic -x tmux.terminfo`
@@ -62,6 +62,8 @@ tracks my dotfiles:
 1. `mkdir ~/.config/nvim`
 2. `nvim .config/nvim/init.vim`
 3. paste:
+    ```
     set runtimepath+=~/.vim,~/.vim/after
     set packpath+=~/.vim
     source ~/.vimrc
+    ```
