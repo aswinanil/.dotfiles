@@ -32,9 +32,12 @@ Plug 'vim-scripts/bufexplorer.zip'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-endwise'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+colorscheme koehler
 
 syntax enable
 
@@ -61,6 +64,7 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set timeoutlen=1000 ttimeoutlen=0
 set background=dark
 set virtualedit=all
+set noswapfile
 
 highlight Comment cterm=italic
 
@@ -89,9 +93,22 @@ nnoremap <leader>g :g/
 nnoremap <leader>f :FZF<CR>
 " nnoremap <leader>c o<Esc>ccconsole.log();<Esc>F)i
 " nnoremap <leader>C o<esc>ccconsole.log("");<esc>F"i
-nnoremap <leader>c o<Esc>ccconsole.log();<Esc>F)i
-nnoremap <leader>C o<Esc>ccconsole.log("");<Esc>F"i
-inoremap <C-c> console.log();<Esc>F)i
+" nnoremap <leader>C o<Esc>ccconsole.log();<Esc>F)i
+
+
+" nnoremap <leader>cc o<Esc>ccconsole.log();<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log();<Esc>kko<Esc>ccconsole.log();<Esc>F)i
+nnoremap <leader>c o<Esc>ccconsole.log();<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log();<Esc>kko<Esc>ccconsole.log("");<Esc>F"i
+
+" nnoremap <leader>cinput() o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");<Esc>^
+" nnoremap <leader>cc o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");console.log("*")<Esc>^
+
+" nnoremap <leader>c o<Esc>ccconsole.log("*");<Esc>^
+
+" nnoremap <leader>c<CR> o<Esc>ccconsole.log();<Esc>F)i
+" nnoremap <leader>C o<Esc>ccconsole.log();<Esc>F)i
+" nnoremap <leader>' o<Esc>ccconsole.log("");<Esc>F"i
+
+inoremap <C-c> console.log("");<Esc>F"i
 nnoremap <leader>d o<Esc>ccdebugger;<Esc>0
 inoremap <C-d> debugger;<Esc>0
 
@@ -111,7 +128,8 @@ nnoremap <leader>0 :b 1
 
 noremap <silent> <leader>j :call AddEmptyLineBelow()<CR>
 noremap <silent> <leader>k :call AddEmptyLineAbove()<CR>
-noremap <silent> <leader><CR> i<CR><Esc>k$
+" noremap <silent> <leader><CR> i<CR><Esc>k$
+
 " nnoremap <leader>n :delmarks A-Z0-9<CR>
 " nnoremap <leader>s :source ~/.vimrc<CR>
 
@@ -196,6 +214,8 @@ nnoremap <C-u> 7<C-y>7k
 nnoremap <C-d> 7<C-e>7j
 nnoremap <C-b> <C-b>M0
 nnoremap <C-f> <C-f>M0
+
+nnoremap <C-m> <C-b><C-b><C-b><C-b><C-b><C-b>M0
 
 nnoremap zt ztM0
 nnoremap zb zbM0
