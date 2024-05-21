@@ -32,6 +32,16 @@ tracks my dotfiles:
     1. `mkdir ~/.vim/after/indent`
     2. `ln -sv ~/.dotfiles/sass.vim ~/.vim/after/indent`
 
+## nvim
+1. `mkdir ~/.config/nvim`
+2. `nvim .config/nvim/init.vim`
+3. paste:
+    ```
+    set runtimepath+=~/.vim,~/.vim/after
+    set packpath+=~/.vim
+    source ~/.vimrc
+    ```
+
 ## install packages
 ### vim
 1. setup vim plug
@@ -57,13 +67,3 @@ tracks my dotfiles:
 
 ## enable italics in tmux
 1. `tic -x tmux.terminfo`
-
-## nvim
-1. `mkdir ~/.config/nvim`
-2. `nvim .config/nvim/init.vim`
-3. paste:
-    ```
-    set runtimepath+=~/.vim,~/.vim/after
-    set packpath+=~/.vim
-    source ~/.vimrc
-    ```
