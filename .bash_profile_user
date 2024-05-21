@@ -11,9 +11,10 @@ alias vim="nvim"
 ## env variables
 export N_PREFIX="$HOME/.n"
 export PATH=$N_PREFIX/bin:$PATH
+export PATH="$PATH:$HOME/go/bin"
 
-bind "set completion-ignore-case on"
-bind "set show-all-if-ambiguous on"
+#bindkey "set completion-ignore-case on"
+#bindkey "set show-all-if-ambiguous on"
 
 # aliases
 
@@ -47,7 +48,8 @@ alias fzv='vim $(fzf)'
 alias fzn='nvim $(fzf)'
 
 ### project specific
-alias lint='yarn run eslint . --ext .js --ignore-pattern "pipeline-common/*" --ignore-pattern "event-schema-js/*"'
+# alias lint='yarn run eslint . --ext .js --ignore-pattern "pipeline-common/*" --ignore-pattern "event-schema-js/*"'
+alias lint='eslint . --ext .js --ignore-pattern "pipeline-common/*" --ignore-pattern "event-schema-js/*"'
 
 ### software
 alias teams='~/programs/ms-teams/teams_1.4.00.26453_amd64/usr/bin/teams'
@@ -135,6 +137,7 @@ alias g-su='git submodule update --init --recursive'
 alias d-p='docker ps'
 alias d-pr='p-dkr && ./docker_prepare.sh'
 alias d-pn='p-dkr && ./docker_prune.sh'
+alias d-pnv='docker volume rm $(docker volume ls -qf dangling=true)'
 
 alias d-l='p-dkr && ./docker_logs.sh'
 alias d-la='p-dkr && ./docker_logs.sh api1'

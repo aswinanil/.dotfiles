@@ -23,6 +23,7 @@ stty -ixon
 alias d-p='sudo docker ps'
 alias d-pr='p-dkr && sudo ./docker_prepare.sh'
 alias d-pn='p-dkr && sudo ./docker_prune.sh'
+alias d-pnv='sudo docker volume rm $(docker volume ls -qf dangling=true)'
 
 alias d-l='p-dkr && sudo ./docker_logs.sh'
 alias d-la='p-dkr && sudo ./docker_logs.sh api1'
