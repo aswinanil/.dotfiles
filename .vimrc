@@ -33,11 +33,21 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-endwise'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/edge'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-colorscheme koehler
+"colorscheme koehler
+"colorscheme pink-moon
+"colorscheme mod8
+colorscheme dracula
+"colorscheme gruvbox
+"colorscheme edge
+
+hi Normal guibg=NONE ctermbg=NONE
+
 
 syntax enable
 
@@ -83,7 +93,7 @@ nnoremap <leader>D :w !diff % -<CR>
 " nnoremap <leader>l :Ls<CR>
 nnoremap <leader>l :BufExplorer<CR>
 nnoremap <leader>a :bad ./
-nnoremap <leader>e :e ./
+ nnoremap <leader>e :e ./
 nnoremap <leader>E :e<space>
 nnoremap <leader>m :marks<CR>
 nnoremap <leader>v <C-w>H
@@ -98,6 +108,10 @@ nnoremap <leader>f :FZF<CR>
 
 " nnoremap <leader>cc o<Esc>ccconsole.log();<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log();<Esc>kko<Esc>ccconsole.log();<Esc>F)i
 nnoremap <leader>c o<Esc>ccconsole.log();<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log();<Esc>kko<Esc>ccconsole.log("");<Esc>F"i
+
+nnoremap <leader>t o<Esc>ccfmt.Println()<Esc>o<Esc>ccfmt.Println("*")<Esc>o<Esc>ccfmt.Println("*")<Esc>o<Esc>ccfmt.Println()<Esc>kko<Esc>ccfmt.Println("")<Esc>F"i
+
+nnoremap <leader>h o<Esc>ccecho "<div>";<Esc>o<Esc>ccecho "</div>";<Esc>ko<Esc>ccecho "";<Esc>F"i
 
 " nnoremap <leader>cinput() o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");<Esc>^
 " nnoremap <leader>cc o<Esc>ccconsole.log("*");<Esc>o<Esc>ccconsole.log("*");console.log("*")<Esc>^
@@ -153,7 +167,9 @@ inoremap {{ {}<Esc>i
 inoremap [[ []<Esc>i
 inoremap << <><Esc>i
 inoremap "" ""<Esc>i
+inoremap "; "";<Esc>hi
 inoremap '' ''<Esc>i
+inoremap '; '';<Esc>hi
 
 " inoremap => =><space>  "messes up ==
 
@@ -210,23 +226,17 @@ nnoremap M M0
 nnoremap <c-G> Gzz
 
 " page navigation should shift cursor to start of line
-nnoremap <C-u> 7<C-y>7k
-nnoremap <C-d> 7<C-e>7j
-nnoremap <C-b> <C-b>M0
-nnoremap <C-f> <C-f>M0
+"nnoremap <C-u> 7<C-y>7k
+"nnoremap <C-d> 7<C-e>7j
+nnoremap <C-u> 7<C-y>
+nnoremap <C-d> 7<C-e>
+nnoremap <C-b> <C-b>4<C-e>M0
+nnoremap <C-f> <C-f>4<C-y>M0
 
-nnoremap <C-m> <C-b><C-b><C-b><C-b><C-b><C-b>M0
+" nnoremap <C-m> <C-b><C-b><C-b><C-b><C-b><C-b>M0
 
 nnoremap zt ztM0
 nnoremap zb zbM0
-
-nnoremap <F10> <C-f>M0
-nnoremap <F11> <C-b>M0
-
-" nnoremap <F1> 7<C-e>7j
-" nnoremap <F2> 7<C-y>7k
-" nnoremap <F3> <C-e>j
-" nnoremap <F4> <C-y>k
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
