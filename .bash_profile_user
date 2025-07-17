@@ -8,6 +8,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # export EDITOR=vim
 alias vim="nvim"
 
+
 ## env variables
 export N_PREFIX="$HOME/.n"
 export PATH=$N_PREFIX/bin:$PATH
@@ -37,6 +38,7 @@ alias lsa='ls -a'
 
 ### yarn
 alias y-d='yarn && yarn run dev'
+alias y-dbd='p-dbd && cd ./web/client/ && yarn start'
 alias y-t='yarn run test'
 alias y-awa='p-awa && yarn && y-d'
 
@@ -104,8 +106,7 @@ alias g-aa='git add api/ && g-s'
 
 alias g-sh1='git show --ignore-space-at-eol -b -w --ignore-blank-lines'
 alias g-sh='g-sh1 -U27 '
-alias g-shh='g-sh HEAD'
-alias g-shh1='g-sh1 HEAD'
+alias g-shn='g-sh --name-only'
 
 alias g-st='git stash'
 alias g-stl='git stash list'
@@ -203,7 +204,7 @@ f-d() {
 d-cc() {
     if [ "$1" ]
     then
-        sudo docker exec -it "$1" /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
+        docker exec -it "$1" /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
     fi
 }
 
