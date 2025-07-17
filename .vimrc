@@ -101,6 +101,7 @@ nnoremap <leader>h <C-w>K
 nnoremap <leader>F :let @+ = expand("%:p")<CR>
 nnoremap <leader>g :g/
 nnoremap <leader>f :FZF<CR>
+nnoremap <leader><CR> i<CR><Esc>
 " nnoremap <leader>c o<Esc>ccconsole.log();<Esc>F)i
 " nnoremap <leader>C o<esc>ccconsole.log("");<esc>F"i
 " nnoremap <leader>C o<Esc>ccconsole.log();<Esc>F)i
