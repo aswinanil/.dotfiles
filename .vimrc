@@ -262,7 +262,7 @@ nnoremap N Nzz
 " nnoremap * *zz
 
 " highlights
-nnoremap _ *##*
+nnoremap _ #*
 nnoremap ) :set hlsearch<CR>
 nnoremap + :nohlsearch<CR>
 

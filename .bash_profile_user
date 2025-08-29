@@ -188,17 +188,17 @@ alias d-pa='p-dkr && sudo docker-compose build --no-cache public-api && sudo doc
 f-1() {
     if [ "$2" ]
     then
-        find "$1" -iname *"$2"*;
+        find "$1" -iname "*$2*";
     else
-        find ./ -iname *"$1"*;
+        find ./ -iname "*$1*";
     fi
 }
 f-d() {
     if [ "$2" ]
     then
-        find "$1" -iname *"$2"* -type f -delete;
+        find "$1" -iname "*$2*" -type f -delete;
     else
-        find ./ -iname *"$1"* -type f -delete;
+        find ./ -iname "*$1*" -type f -delete;
     fi
 }
 d-cc() {
