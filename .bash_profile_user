@@ -7,6 +7,7 @@ export LC_ALL=en_US.UTF-8
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # export EDITOR=vim
 alias vim="nvim"
+alias fvim="vim"
 
 
 ## env variables
@@ -20,6 +21,9 @@ export PATH="$PATH:$HOME/go/bin"
 # aliases
 
 ## misc
+
+### ngrok
+alias ngrok-zoom='ngrok http 3333 --url=cattle-eternal-loosely.ngrok-free.app'
 
 ### search
 alias r-g='rg -iA29 -B13 $1'
@@ -41,6 +45,7 @@ alias y-d='yarn && yarn run dev'
 alias y-dbd='p-dbd && cd ./web/client/ && yarn start'
 alias y-t='yarn run test'
 alias y-awa='p-awa && yarn && y-d'
+alias y-gas='node copyEnum.js && clasp push --project .dev.clasp.json'
 
 ### vpn fix
 alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'
@@ -154,6 +159,7 @@ alias d-la2='p-dkr && ./docker_logs.sh api2'
 alias d-lw='p-dkr && ./docker_logs.sh web-app'
 alias d-ld='p-dkr && ./docker_logs.sh dashboard'
 alias d-lpa='p-dkr && ./docker_logs.sh public-api'
+alias d-lpa='p-dkr && ./docker_logs.sh presentation-dashboard'
 
 alias d-c='p-dkr && ./docker_connect.sh'
 alias d-ca='p-dkr && ./docker_connect.sh api1'
@@ -161,6 +167,7 @@ alias d-ca2='p-dkr && ./docker_connect.sh api2'
 alias d-cw='p-dkr && ./docker_connect.sh web-app'
 alias d-cd='p-dkr && ./docker_connect.sh dashboard'
 alias d-cpa='p-dkr && ./docker_connect.sh public-api'
+alias d-cpd='p-dkr && ./docker_connect.sh presentation-dashboard'
 
 alias d-cp='p-dkr && docker-compose build'
 
