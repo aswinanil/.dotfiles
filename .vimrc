@@ -1,3 +1,6 @@
+" let g:netrw_altfile = 1
+filetype plugin indent on
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -8,17 +11,22 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'thirtythreeforty/lessspace.vim'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
+Plug 'stevearc/oil.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
 " Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ibhagwan/fzf-lua'
+
 Plug 'justinmk/vim-sneak'
 " Plug 'tmsvg/pear-tree'  " need find alternative style
 Plug 'vim-airline/vim-airline'
@@ -28,16 +36,21 @@ Plug 'vim-airline/vim-airline'
 Plug 'mustache/vim-mustache-handlebars'
 " Plug 'fholgado/minibufexpl.vim'
 " Plug 'jeetsukumaran/vim-buffergator'
-Plug 'vim-scripts/bufexplorer.zip'
+" Plug 'vim-scripts/bufexplorer.zip'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-endwise'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/edge'
+Plug 'fatih/vim-go'
+" Plug 'neovim/nvim-lspconfig'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+source ~/.vim/config/coc.vim
 
 "colorscheme koehler
 "colorscheme pink-moon
@@ -76,22 +89,32 @@ set background=dark
 set virtualedit=all
 set noswapfile
 
-highlight Comment cterm=italic
+highlight Comment cterm=italic gui=italic
 
 let g:indentLine_color_term=244
 let g:limelight_conceal_ctermfg=243
 let mapleader=" "
 let g:airline_extensions = []
-let g:netrw_altfile = 1
 " let g:airline_powerline_fonts=1
 
+let g:vim_markdown_strikethrough = 1
+
+" let g:bufExplorerShowDirectories=0   " Do not show directories.
+
+" vnoremap y "ay
+" nnoremap y "ay
+" nnoremap yy "ayy
+" vnoremap p "ap
+
 nnoremap <leader>w :update<CR>
+nnoremap 0 :update<CR>0
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 nnoremap <leader>r :e!<CR>
 nnoremap <leader>D :w !diff % -<CR>
 " nnoremap <leader>l :Ls<CR>
-nnoremap <leader>l :BufExplorer<CR>
+" nnoremap <leader>l :BufExplorer<CR>
+nnoremap <leader>l :FzfLua buffers<CR>
 nnoremap <leader>a :bad ./
  nnoremap <leader>e :e ./
 nnoremap <leader>E :e<space>
@@ -100,7 +123,7 @@ nnoremap <leader>v <C-w>H
 nnoremap <leader>h <C-w>K
 nnoremap <leader>F :let @+ = expand("%:p")<CR>
 nnoremap <leader>g :g/
-nnoremap <leader>f :FZF<CR>
+nnoremap <leader>f :FzfLua files<CR>
 nnoremap <leader><CR> i<CR><Esc>
 " nnoremap <leader>c o<Esc>ccconsole.log();<Esc>F)i
 " nnoremap <leader>C o<esc>ccconsole.log("");<esc>F"i
@@ -147,6 +170,8 @@ noremap <silent> <leader>k :call AddEmptyLineAbove()<CR>
 
 " nnoremap <leader>n :delmarks A-Z0-9<CR>
 " nnoremap <leader>s :source ~/.vimrc<CR>
+
+vmap u <Nop>
 
 " select just pasted text
 noremap <expr> <leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -211,6 +236,8 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+au FileType go nnoremap <c-k> <Plug>(go-doc)
+
 " move by few lines
 nnoremap J 7gj
 nnoremap K 7gk
@@ -270,9 +297,14 @@ nnoremap <NUL> i<space><esc>
 nnoremap I i <Esc>r
 nmap <leader><space> I<space>
 
+nmap <leader><space> I<space>
+
+
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 autocmd VimResized * exe "normal! \<c-w>="
+" autocmd FileType netrw setlocal nobuflisted  " Ensure netrw buffers are not added to the buffer list by default
+" autocmd BufReadPost * if isdirectory(expand('<afile>')) | bd | endif
 
 " *** COMMANDS ***
 
