@@ -6,3 +6,5 @@ tmux|tmux terminal multiplexer,
 
 tmux-256color|tmux with 256 colors,
   use=xterm-256color, use=tmux,
+  smxx=\E[9m,
+  rmxx=\E[29m,
