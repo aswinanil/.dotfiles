@@ -42,13 +42,11 @@ alias lsa='ls -a'
 
 ### yarn
 alias y-d='yarn && yarn run dev'
-alias y-dbd='p-dbd && cd ./web/client/ && yarn start'
+alias y-a='yarn audit --level=high'
 alias y-t='yarn run test'
+alias y-dbd='p-dbd && cd ./web/client/ && yarn start'
 alias y-awa='p-awa && yarn && y-d'
 alias y-gas='node copyEnum.js && clasp push --project .dev.clasp.json'
-
-### vpn fix
-alias fixvpn='sudo ifconfig en0 down && sudo route -n flush && sudo ifconfig en0 up'
 
 ### fzf
 alias fzv='vim $(fzf)'
@@ -68,13 +66,14 @@ alias print-colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0
 alias p-awa='cd ~/code/pigeonlab/web-app'
 alias p-dbd='cd ~/code/pigeonlab/dashboard'
 alias p-api='cd ~/code/pigeonlab/api'
-alias p-dbv='cd ~/code/pigeonlab/dbv'
+alias p-pa='cd ~/code/pigeonlab/public-api-go'
 alias p-dbm='cd ~/code/pigeonlab/db-manager'
 alias p-dkr='cd ~/code/pigeonlab/docker-main'
 alias p-mst='cd ~/code/pigeonlab/ms-teams'
 alias p-ppt='cd ~/code/pigeonlab/microsoft-powerpoint-addon'
 alias p-gsl='cd ~/code/pigeonlab/google-slide-integration'
 alias p-lab='cd ~/code/pigeonlab/'
+alias p-k6='cd ~/code/pigeonlab/stress-tests/k6'
 alias wef='cd ~/Library/Containers/com.microsoft.Powerpoint/Data/Documents/wef'
 
 alias notes='cd ~/Google\ Drive/GD\ personal/notes/pigeonlab'
@@ -136,7 +135,8 @@ alias g-b='git branch'
 alias g-bf='g-b | grep $1'
 
 alias g-r='git reset'
-alias g-rh='git reset HEAD'
+alias g-rh='git reset HEAD^'
+alias g-rhh='git reset --hard HEAD^'
 alias g-rs='git restore --staged'
 alias g-rb='git rebase -i'
 alias g-uis='git update-index --skip-worktree'
@@ -185,11 +185,16 @@ alias d-rba2='p-dkr && ./rebuild_container.sh api2'
 alias d-rbw='p-dkr && ./rebuild_container.sh web-app'
 alias d-rbd='p-dkr && ./rebuild_container.sh dashboard'
 
+alias d-cb='docker-compose build --no-cache'
+
 alias d-sa='p-dkr && ./start.sh'
 alias d-so='p-dkr && ./stop.sh'
 alias d-rs='p-dkr && d-pr && d-so && d-pr && d-sa && d-pr && d-la'
 
-alias d-pa='p-dkr && sudo docker-compose build --no-cache public-api && sudo docker-compose up public-api && d-lpa'
+alias d-pa='p-dkr && docker-compose build --no-cache public-api && docker-compose up public-api && d-lpa'
+
+alias d-k6='p-k6 && docker run -v "$(pwd)":/app grafana/k6:0.53.0 run /app/tests/chat.js'
+alias d-k6pa='p-k6 && docker run -v "$(pwd)":/app grafana/k6:0.53.0 run /app/tests/pa-burst-limit.js'
 
 # functions
 f-1() {

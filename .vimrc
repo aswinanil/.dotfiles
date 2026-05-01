@@ -107,6 +107,7 @@ let g:vim_markdown_strikethrough = 1
 " vnoremap p "ap
 
 nnoremap <leader>w :update<CR>
+nnoremap W :update<CR>
 nnoremap 0 :update<CR>0
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
